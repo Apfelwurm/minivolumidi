@@ -23,7 +23,9 @@ int8_t isConnected = 0;
 #define START_POS       20
 #define INCREMENT       1   // this number is the counter increment on each step
 
-bool newpos = false;;
+bool newpos = false;
+bool mute = false;
+bool unmute = true;
 
 /////////////////////////////////////////////////////////////////
 APPLEMIDI_CREATE_DEFAULTSESSION_INSTANCE();
@@ -49,12 +51,13 @@ void showDirection(ESPRotary& r) {
 
 // single click
 void click(Button2& btn) {
+  mute=true;
   Serial.println("Click!");
 }
 
 // long click
 void resetPosition(Button2& btn) {
-  r.resetPosition();
+  unmute = true;
   Serial.println("Reset!");
 }
 
@@ -115,21 +118,33 @@ void setup() {
 }
 
 void loop() {
+  MIDI.read();
   r.loop();
   b.loop();
 
   if ((isConnected > 0) && (millis() - t0) > 1000)
   {
     t0 = millis();
+    if (mute){
+      MIDI.sendControlChange((byte)91,(byte)0,1);
+      mute=false;
+    }
+    if (unmute)
+    {     
+      MIDI.sendControlChange((byte)91,(byte)r.getPosition(),1);
+      unmute=false;
+    }
 
     if (newpos)
     {
-
-      
       MIDI.sendControlChange((byte)91,(byte)r.getPosition(),1);
       newpos = false;
     }
 
+
+
   }
 
 }
+
+
