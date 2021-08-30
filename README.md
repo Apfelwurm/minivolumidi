@@ -11,6 +11,9 @@ This project is based on the following sources:
 
 Thanks to all the nice people making qick projects like this possible by their contributions to the open source world! 
 
+![minivolumidi](img/IMG_20210830_220900244.jpg)
+(more pictures in the ``img`` folder)
+
 ## prerequirements for building the hardware
 
 * [Wemos D1 mini (ESP8266)](https://www.wemos.cc/en/latest/d1/d1_mini.html)

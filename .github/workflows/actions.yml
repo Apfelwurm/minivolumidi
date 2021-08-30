@@ -6,6 +6,7 @@ on:
     paths:
     - '**'
     - '!case/**'
+    - '!img/**'
     - '!README.md'
   push:
     branches: 
