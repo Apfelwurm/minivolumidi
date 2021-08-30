@@ -1,3 +1,4 @@
+// This Version is based on https://www.thingiverse.com/thing:2814909 and the Rotary Encoder Cap is used from https://www.thingiverse.com/thing:3646462
 //
 // WeMOS D1 Mini Stack Enclosure Script
 // This Version is inspired from https://www.thingiverse.com/thing:1776349/#files
@@ -28,7 +29,7 @@
 /* [inner Height Z] */
 // Final height of the stack measured when placing the sole stack on a flat surface.
 //innerHeightZ = 58.7;
-innerHeightZ = 18.4;
+innerHeightZ = 14.4;
 
 
 /* [Shield Ports] */
@@ -68,7 +69,7 @@ lidCutOutType="LED"; // [ LCD:LCD Shield , DHT:Dht Shield,DHThorizontal:Dht Shie
 showLid=true;
 
 //Side and Front slits for letting warm air out
-airSlits=true;
+airSlits=false;
 
 /* [Others] */
 wallThickness = 1.8;
@@ -77,7 +78,7 @@ wallThickness = 1.8;
 bottomHasPinoutSlits=true;
 
 // Add mounting clips with screw holes a bottom
-numberOfBaseMountingClips=4;
+numberOfBaseMountingClips=0;
 
 // show some Examples
 showExamples=false;
@@ -118,6 +119,14 @@ slitDimension=[2.6,23.0,10.0];
 
 /* calculated */
 extraGap2=2*extraGap;
+
+
+// ===================================================
+// Rotary knob - https://www.thingiverse.com/thing:3646462
+// ===================================================
+
+translate([40,0,0])rotate([0,270,0])
+import("Drehregler7.stl");
 
 // ===================================================
 // Main
@@ -285,7 +294,7 @@ module lid(lidCutOutType="BUTTON"){
                         rotate([180,0,0])
                             text("DHT", ,size=7,halign="center");   
         } else if (lidCutOutType=="LED") {
-                dLED=4.2;
+                dLED=5.9;
                 translate(wallThickness*[1,1,1.001]
                          +[innerSizeX/2,0,0])
                     translate([-0,15.2,0] -printerWobbleXYZ   ) 
@@ -295,7 +304,7 @@ module lid(lidCutOutType="BUTTON"){
                 translate([wallThickness+innerSizeX/2,32,-0.01])
                     linear_extrude(height = 0.5) 
                         rotate([180,0,0])
-                            text("LED", ,size=7,halign="center");   
+                            text("VOL", ,size=7,halign="center");   
         } else if (lidCutOutType=="DHThorizontal") {
                 dhtSensorDimensions=[12.1+extraGap,15.6+extraGap,6];
                 translate(wallThickness*[1,1,-0.001]
@@ -591,3 +600,4 @@ module  base(
                 }
         }
 }
+
