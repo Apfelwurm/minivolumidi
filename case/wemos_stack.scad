@@ -294,7 +294,7 @@ module lid(lidCutOutType="BUTTON"){
                         rotate([180,0,0])
                             text("DHT", ,size=7,halign="center");   
         } else if (lidCutOutType=="LED") {
-                dLED=5.9;
+                dLED=6.0;
                 translate(wallThickness*[1,1,1.001]
                          +[innerSizeX/2,0,0])
                     translate([-0,15.2,0] -printerWobbleXYZ   ) 
