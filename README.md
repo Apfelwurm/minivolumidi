@@ -93,7 +93,7 @@ For customizing of the case or if you dont want to print the knob, look into the
 
 ## contributions
 
-if you want to contribute to the project or if you have problems, dont hesetate to open issues or submit pull requests.
+if you want to contribute to the project or if you have problems, dont hesitate to open issues or submit pull requests.
 
 
 
