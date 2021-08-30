@@ -3,10 +3,18 @@ name: minivolumidi_build_check
 on:
   pull_request:
     branches: [ main, develop ]
+    paths:
+    - '**'
+    - '!case/**'
+    - '!README.md'
   push:
     branches: 
     - main
     - develop
+    paths:
+    - '**'
+    - '!case/**'
+    - '!README.md'
 
 jobs:
   build_linux:
