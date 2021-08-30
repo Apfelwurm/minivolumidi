@@ -1,4 +1,4 @@
-# minimidi firmware
+# minivolumidi firmware
 
 ## Compile
 pio run
